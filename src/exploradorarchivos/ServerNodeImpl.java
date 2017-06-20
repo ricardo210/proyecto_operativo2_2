@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.rmi.AccessException;
+import java.rmi.ConnectException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -268,14 +269,22 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
             
             
             Registry reg2 = LocateRegistry.getRegistry(host, 1100); // agregar host
-            dataserver1 = (DataServer) reg2.lookup("DataServer1");
-            System.out.println("Data server 1 conectado");
+            try{
+                dataserver1 = (DataServer) reg2.lookup("DataServer1");
+                System.out.println("Data server 1 conectado");
+            }catch(ConnectException e){
+                System.out.println("Data Server 1 refused connection!");
+            }
 
             
 
             Registry reg4 = LocateRegistry.getRegistry(host,1102);
-            dataserver2 = (DataServer) reg4.lookup("DataServer2");
-            System.out.println("Data server 2 conectado");
+            try{
+                dataserver2 = (DataServer) reg4.lookup("DataServer2");
+                System.out.println("Data server 2 conectado");
+            }catch(ConnectException e){
+                System.out.println("Data Server 2 refused connection!");
+            }
             
           
             

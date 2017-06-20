@@ -45,10 +45,9 @@ public class DataServer2 extends UnicastRemoteObject implements DataServer {
             directorio = new File("./Data/DataServer2");
             if (!directorio.exists()) {
                 try {
-                    if (directorio.mkdirs()) {
-                    } else {}
+                    directorio.mkdirs();
                 } catch (Exception e) {}
-            } else {}
+            }
             reg = LocateRegistry.createRegistry(1102);
             reg.rebind("DataServer2", new DataServer1(directorio));
             System.out.println("DataServer2 conectado");
@@ -133,10 +132,4 @@ public class DataServer2 extends UnicastRemoteObject implements DataServer {
             throw new FileNotFoundException("Failed to delete file: " + f);
         }
     }
-
-    
-    
-    
-    
-    
 }

@@ -8,8 +8,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -47,10 +45,9 @@ public class DataServer1 extends UnicastRemoteObject implements DataServer {
             directorio = new File("./Data/DataServer1");
             if (!directorio.exists()) {
                 try {
-                    if (directorio.mkdirs()) {
-                    } else {}
+                    directorio.mkdirs();
                 } catch (Exception e) {}
-            } else {}
+            }
             reg = LocateRegistry.createRegistry(1100);
             reg.rebind("DataServer1", new DataServer1(directorio));
             System.out.println("DataServer1 conectado");
@@ -136,8 +133,4 @@ public class DataServer1 extends UnicastRemoteObject implements DataServer {
             throw new FileNotFoundException("Failed to delete file: " + f);
         }
     }
-
-    
-
-    
 }
