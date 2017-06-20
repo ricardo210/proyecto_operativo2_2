@@ -67,7 +67,7 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
     
     @Override
     public void mensajeServer(String mensaje) throws RemoteException {
-        
+        System.out.println(mensaje);
     }
     
     private TreePath find(DefaultMutableTreeNode root, DefaultMutableTreeNode search) {
