@@ -26,9 +26,11 @@ import javax.swing.tree.TreePath;
 
 public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
     private static HashMap<String, registro> registros = new HashMap();
+    
     private static DataServer dataserver1;
-
     private static DataServer dataserver2;
+    private static DataServer dataserver3;
+    private static DataServer dataserver4;
 
     private static DefaultTreeModel directorio;
      
@@ -267,7 +269,6 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
             registry.rebind("ServerNode", new ServerNodeImpl()); 
             System.out.println("ServerNode iniciado"); 
             
-            
             Registry reg2 = LocateRegistry.getRegistry(host, 1100); // agregar host
             try{
                 dataserver1 = (DataServer) reg2.lookup("DataServer1");
@@ -275,8 +276,6 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
             }catch(ConnectException e){
                 System.out.println("Data Server 1 refused connection!");
             }
-
-            
 
             Registry reg4 = LocateRegistry.getRegistry(host,1102);
             try{
@@ -286,13 +285,26 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
                 System.out.println("Data Server 2 refused connection!");
             }
             
-          
+            Registry reg6 = LocateRegistry.getRegistry(host,1104);
+            try{
+                dataserver3 = (DataServer) reg6.lookup("DataServer3");
+                System.out.println("Data server 3 conectado");
+            }catch(ConnectException e){
+                System.out.println("Data Server 3 refused connection!");
+            }
+            
+            Registry reg8 = LocateRegistry.getRegistry(host,1106);
+            try{
+                dataserver4 = (DataServer) reg8.lookup("DataServer4");
+                System.out.println("Data server 4 conectado");
+            }catch(ConnectException e){
+                System.out.println("Data Server 4 refused connection!");
+            }
             
             dataserver1.Mensaje("Hola "+registros.get("DataServer1").getId());
-         
             dataserver2.Mensaje("Hola "+registros.get("DataServer2").getId());
-   
-            
+            dataserver3.Mensaje("Hola "+registros.get("DataServer3").getId());
+            dataserver4.Mensaje("Hola "+registros.get("DataServer4").getId());
             
         } catch (Exception e) {
             e.printStackTrace();
@@ -303,9 +315,8 @@ public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
         registros.put("ServerNode", new registro(1));
         registros.put("DataServer1", new registro(2));
         registros.put("DataServer2", new registro(4));
-
-        
-        
+        registros.put("DataServer3", new registro(6));
+        registros.put("DataServer4", new registro(8));
         
         iniciar();   
     }  
