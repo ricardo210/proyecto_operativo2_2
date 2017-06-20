@@ -3,27 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataServer;
+package exploradorarchivos;
 
 import java.io.File;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface DSRMI extends Remote {
-
-    public void printInServerSide(String msg) throws RemoteException;
-
+/**
+ *
+ * @author Denisse Carbajal
+ */
+public interface DataServer extends Remote {
+    public void Mensaje(String mensaje)throws RemoteException;
+    
     public File getFile(String name) throws RemoteException;
 
     public String getFileContent(String name) throws RemoteException;
 
     public boolean createFile(String content, String name) throws RemoteException;
 
-    public boolean editFile(String content, String name) throws RemoteException;
-
     public boolean deleteFile(String name) throws RemoteException;
 
-    public boolean deleteDir(String name) throws RemoteException;
     
-    public boolean addDir(String name) throws RemoteException;
 }
