@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package exploradorarchivos;
 
 import java.io.BufferedReader;
@@ -21,10 +17,7 @@ import java.rmi.server.UnicastRemoteObject;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Denisse Carbajal
- */
+
 public class DataServer1 extends UnicastRemoteObject implements DataServer {
  
     public DataServer1(File directorio) throws RemoteException {
@@ -105,9 +98,7 @@ public class DataServer1 extends UnicastRemoteObject implements DataServer {
         }
 
         System.out.println("Nombre del Archivo: " + name);
-        /*
-        
-         */
+      
         return true;
     }
 

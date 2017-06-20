@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package exploradorarchivos;
 
 import java.io.EOFException;
@@ -27,10 +23,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 
 
-/**
- *
- * @author Denisse Carbajal
- */
 public class ServerNodeImpl extends UnicastRemoteObject implements ServerNode{
     private static HashMap<String, registro> registros = new HashMap();
     private static DataServer dataserver1;
